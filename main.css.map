@@ -1,7 +1,7 @@
 {
 	"version": 3,
 	"file": "main.css",
-	"sourceRoot": "/home/runner/work/thedeskofbrad.ca/thedeskofbrad.ca",
+	"sourceRoot": "/home/runner/work/thedeskofbrad.github.io/thedeskofbrad.github.io",
 	"sources": [
 		"themes/hello-friend-ng/assets/scss/main.scss",
 		"themes/hello-friend-ng/assets/scss/_normalize.scss",
