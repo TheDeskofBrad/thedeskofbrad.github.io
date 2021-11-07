@@ -1,0 +1,150 @@
+<!doctype html><html lang=en>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="ie=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=author content="Brad Thornborrow ">
+<meta name=description content="Recently, I was working with a client to consolidate of several Active Directory and LDAP domains into a single unified domain. To ensure we were starting with a clean slate, one of the first steps I performed was an audit to find any inactive accounts in the Active Directory domains. This allowed the client to investigate and/or remove any stale accounts prior to consolidation. There are many professional (and possibly expensive) tools which can be used to automate this process, but for small to mid-sized domains, this can be done fairly easily using the following PowerShell command and some Excel manipulation.">
+<meta name=keywords content=",active directory,exchange,powershell">
+<meta name=robots content="noodp">
+<meta name=theme-color content>
+<link rel=canonical href=/posts/2018/07/using-powershell-to-find-inactive-users-in-ad-and-exchange/>
+<title>
+Using PowerShell to Find Inactive Users in AD and Exchange ∣ Brad Thornborrow
+</title>
+<link href=https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css rel=stylesheet type=text/css>
+<link rel=stylesheet href=/main.min.feca676bd2344243429c1be3db7ad89c169586b90da8dd758767ee900ec735ef.css>
+<link rel=stylesheet type=text/css href=/css/custom.css>
+<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
+<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
+<link rel=manifest href=/site.webmanifest>
+<link rel=mask-icon href=/safari-pinned-tab.svg color>
+<link rel="shortcut icon" href=/favicon.ico>
+<meta name=msapplication-TileColor content>
+<meta name=theme-color content>
+<meta itemprop=name content="Using PowerShell to Find Inactive Users in AD and Exchange">
+<meta itemprop=description content="Recently, I was working with a client to consolidate of several Active Directory and LDAP domains into a single unified domain. To ensure we were starting with a clean slate, one of the first steps I performed was an audit to find any inactive accounts in the Active Directory domains. This allowed the client to investigate and/or remove any stale accounts prior to consolidation. There are many professional (and possibly expensive) tools which can be used to automate this process, but for small to mid-sized domains, this can be done fairly easily using the following PowerShell command and some Excel manipulation."><meta itemprop=datePublished content="2018-07-05T00:00:00+00:00">
+<meta itemprop=dateModified content="2018-07-05T00:00:00+00:00">
+<meta itemprop=wordCount content="582"><meta itemprop=image content="/">
+<meta itemprop=keywords content="active directory,exchange,powershell,"><meta property="og:title" content="Using PowerShell to Find Inactive Users in AD and Exchange">
+<meta property="og:description" content="Recently, I was working with a client to consolidate of several Active Directory and LDAP domains into a single unified domain. To ensure we were starting with a clean slate, one of the first steps I performed was an audit to find any inactive accounts in the Active Directory domains. This allowed the client to investigate and/or remove any stale accounts prior to consolidation. There are many professional (and possibly expensive) tools which can be used to automate this process, but for small to mid-sized domains, this can be done fairly easily using the following PowerShell command and some Excel manipulation.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="/posts/2018/07/using-powershell-to-find-inactive-users-in-ad-and-exchange/"><meta property="og:image" content="/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2018-07-05T00:00:00+00:00">
+<meta property="article:modified_time" content="2018-07-05T00:00:00+00:00">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="/">
+<meta name=twitter:title content="Using PowerShell to Find Inactive Users in AD and Exchange">
+<meta name=twitter:description content="Recently, I was working with a client to consolidate of several Active Directory and LDAP domains into a single unified domain. To ensure we were starting with a clean slate, one of the first steps I performed was an audit to find any inactive accounts in the Active Directory domains. This allowed the client to investigate and/or remove any stale accounts prior to consolidation. There are many professional (and possibly expensive) tools which can be used to automate this process, but for small to mid-sized domains, this can be done fairly easily using the following PowerShell command and some Excel manipulation.">
+<meta property="article:published_time" content="2018-07-05 00:00:00 +0000 UTC">
+</head>
+<body>
+<div class=container>
+<header class=header>
+<span class=header__inner>
+<a href=/ style=text-decoration:none>
+<div class=logo>
+<span class=logo__mark>></span>
+<span class=logo__text>hello</span>
+<span class=logo__cursor style=background-color:#34fe2e>
+</span>
+</div>
+</a>
+<span class=header__right>
+<nav class=menu>
+<ul class=menu__inner><li><a href=/about/>About</a></li><li><a href=/contact/>Contact</a></li><li><a href=/posts/>Posts</a></li>
+</ul>
+</nav>
+<span class=menu-trigger><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+</span>
+</span>
+</span>
+</header>
+<div class=content>
+<main class=post>
+<div class=post-info>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+3 minutes
+</p>
+</div>
+<article>
+<h1 class=post-title>
+<a href=/posts/2018/07/using-powershell-to-find-inactive-users-in-ad-and-exchange/>Using PowerShell to Find Inactive Users in AD and Exchange</a>
+</h1>
+<div class=post-content>
+<p>Recently, I was working with a client to consolidate of several Active Directory and LDAP domains into a single unified domain. To ensure we were starting with a <em>clean slate</em>, one of the first steps I performed was an audit to find any inactive accounts in the Active Directory domains. This allowed the client to investigate and/or remove any stale accounts prior to consolidation. There are many professional (and possibly expensive) tools which can be used to automate this process, but for small to mid-sized domains, this can be done fairly easily using the following <strong>PowerShell</strong> command and some <strong>Excel</strong> manipulation.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-powershell data-lang=powershell>Get-AdUser -SearchBase <span style=color:#e6db74>&#34;ou=users,dc=company,dc=com&#34;</span> -Filter * -Properties * | select SamAccountName, distinguishedName, LastLogonDate, Department, Title, Enabled | Export-Csv C:\Temp\AdUserLastLogonDate.csv
+</code></pre></div><p>In this example, I have focused on the the <strong>users</strong> OU, although this script could be used to investigate stale computer or service accounts as well. While I only needed the user&rsquo;s account name and <em>LastLogonDate</em> in this report, I also included fields such as <em>Department</em> and <em>Title</em> to assist in identifying the users. The CSV file produced by <strong>PowerShell</strong> could then be opened in <strong>Excel</strong> to quickly locate any inactive accounts by sorting on the <em>LastLogonDate</em> field. That said, there are some specific issues to be aware of using this process.</p>
+<ol>
+<li>The <em>LastLogonDate</em> attribute can be out by up to 14 days (due to how this field is replicated in AD).</li>
+<li>If the <em>LastLogonDate</em> is blank, this indicates the account has never logged in.</li>
+</ol>
+<p>With the information provided in this report, I was able to work with the client to identify stale accounts which could be removed or further investigated. In at least one case, using this report the client identified a service which had not been working in months and was only brought to their attention when the service account showed up as <em>inactive</em>.</p>
+<p>Once this was done, the client decided to perform a similar audit of user mailboxes in Exchange. As above, this can be done fairly easily with a few <strong>PowerShell</strong> commands and <strong>Excel</strong>.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-powershell data-lang=powershell>$UserCredential = Get-Credential
+$Session = New-PSSession -ConfigurationName Microsoft.Exchange -ConnectionUri https<span style=color:#960050;background-color:#1e0010>:</span>//outlook.office365.com/powershell-liveid/ -Credential $UserCredential -Authentication Basic -AllowRedirection
+Get-mailbox -OrganizationalUnit <span style=color:#e6db74>&#34;ou=users,dc=company,dc=com&#34;</span> -resultsize unlimited | Get-MailboxStatistics | select DisplayName, TotalItemSize, Itemcount, legacyDN, lastlogontime | Export-Csv C:\Temp\ExchangeMBOXReport.csv
+</code></pre></div><p>In this example, the client mailboxes are hosted on <strong>Office 365</strong>. The first two commands are required to authenticate and connect to the <strong>Exchange Online PowerShell</strong> interface. Once connected, the <code>Get-Mailbox</code> command is used to export all user mailboxes, and filtered through the <code>Get-MailboxStatistics</code> command, giving the client a quick and dirty report of mailbox usage as well. Once again, the CSV file produced by <strong>PowerShell</strong> could be opened and manipulated in <strong>Excel</strong> to quickly locate any inactive mailboxes by sorting on the <em>lastlogontime</em> field.</p>
+<p>Unfortunately, in more complex environments where <strong>Blackberry BES</strong> (yes, that is still being used out there) or some other Server-Side Antivirus tools, the <em>lastlogontime</em> field may not be correct, as this date is updated every time the mailbox is scanned. In these cases, you will need to use a different process to identify <em>inactive</em> mailboxes. One possible way is to report based on the date of the last item in the <em>Sent Items</em> folder. Rather than get into the details here, I&rsquo;ll refer you to this <a href=https://gallery.technet.microsoft.com/scriptcenter/List-Inactive-Mailboxes-on-1ac82ddf target=_blank>article</a>
+on the <strong>Microsoft Script Center</strong> which covers the process in depth.</p>
+<p>As always, I hope you found this post useful, or at least interesting. To contact me, please use the <a href=/contact>Contact</a>
+page, or message me on <a href=https://twitter.com/bftsystems target=_blank>Twitter</a>
+.</p>
+<p>Thanks for reading.</p>
+</div>
+</article>
+<hr>
+<div class=post-info>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83.0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7" y2="7"/></svg>
+<span class=tag><a href=/tags/active-directory/>active directory</a></span>
+<span class=tag><a href=/tags/exchange/>exchange</a></span>
+<span class=tag><a href=/tags/powershell/>powershell</a></span>
+</p>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6A2 2 0 004 4v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+582 Words
+</p>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+2018-07-05 12:00 AM
+</p>
+</div>
+<div class=pagination>
+<div class=pagination__title>
+<span class=pagination__title-h>Read other posts</span>
+<hr>
+</div>
+<div class=pagination__buttons>
+<span class="button previous">
+<a href=/posts/2018/07/what-happened-to-windows-update/>
+<span class=button__icon>←</span>
+<span class=button__text>What Happened to Windows Update?</span>
+</a>
+</span>
+<span class="button next">
+<a href=/posts/2018/06/simple-script-to-monitor-for-website-changes/>
+<span class=button__text>Simple script to monitor for website changes</span>
+<span class=button__icon>→</span>
+</a>
+</span>
+</div>
+</div>
+</main>
+</div>
+<footer class=footer>
+<div class=footer__inner>
+<div class=footer__content>
+<span>&copy; 2021
+Brad Thornborrow
+<a href=/motd title=motd><svg xmlns="http://www.w3.org/2000/svg" width="22" height="18" viewBox="0 0 20 20" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:0;margin-right:.25em"><rect x="3" y="4" width="18" height="15" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></a></span><span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a><a href="/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 019 9"/><path d="M4 4a16 16 0 0116 16"/><circle cx="5" cy="19" r="1"/></svg></a></span>
+</div>
+</div>
+<div class=footer__inner>
+<div class=footer__content>
+<span>Powered by <a href=http://gohugo.io>Hugo</a> & <a href=https://themes.gohugo.io/hugo-theme-hello-friend-ng/ rel=nofollow>Hello Friend NG</a></span>
+</div>
+</div>
+</footer>
+</div>
+<script type=text/javascript src=/bundle.min.599099f1f14b78b657d524b28e10e0c5098e7cd46e9c7aed73d577068a276c3ff1bb234cbf29cb313333e83cf411727b43157c91ce5b809e2ffc81664614608e.js integrity="sha512-WZCZ8fFLeLZX1SSyjhDgxQmOfNRunHrtc9V3BoonbD/xuyNMvynLMTMz6Dz0EXJ7QxV8kc5bgJ4v/IFmRhRgjg=="></script>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!doctype html><html lang=en>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="ie=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=author content="Brad Thornborrow ">
+<meta name=description content="As I&amp;rsquo;ve mentioned in previous posts, I&amp;rsquo;m a fan of Jekyll for building static websites, but I have also been experimenting with Micro.blog for my personal site. There was a recent discussion on Micro.blog looking for options to mirror posts from Micro.blog to Jekyll. This question stuck with me, and as I already have a Raspberry Pi server in production for handling other daily maintenance tasks, I decided to investigate if this could be done in Python, building on my previous experience.">
+<meta name=keywords content=",jekyll,microblog,python">
+<meta name=robots content="noodp">
+<meta name=theme-color content>
+<link rel=canonical href=/posts/2018/05/script-for-exporting-micro.blog-posts-to-jekyll/>
+<title>
+Script for Exporting Micro.blog posts to Jekyll ∣ Brad Thornborrow
+</title>
+<link href=https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css rel=stylesheet type=text/css>
+<link rel=stylesheet href=/main.min.feca676bd2344243429c1be3db7ad89c169586b90da8dd758767ee900ec735ef.css>
+<link rel=stylesheet type=text/css href=/css/custom.css>
+<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
+<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
+<link rel=manifest href=/site.webmanifest>
+<link rel=mask-icon href=/safari-pinned-tab.svg color>
+<link rel="shortcut icon" href=/favicon.ico>
+<meta name=msapplication-TileColor content>
+<meta name=theme-color content>
+<meta itemprop=name content="Script for Exporting Micro.blog posts to Jekyll">
+<meta itemprop=description content="As I&rsquo;ve mentioned in previous posts, I&rsquo;m a fan of Jekyll for building static websites, but I have also been experimenting with Micro.blog for my personal site. There was a recent discussion on Micro.blog looking for options to mirror posts from Micro.blog to Jekyll. This question stuck with me, and as I already have a Raspberry Pi server in production for handling other daily maintenance tasks, I decided to investigate if this could be done in Python, building on my previous experience."><meta itemprop=datePublished content="2018-05-23T00:00:00+00:00">
+<meta itemprop=dateModified content="2018-05-23T00:00:00+00:00">
+<meta itemprop=wordCount content="1021"><meta itemprop=image content="/">
+<meta itemprop=keywords content="jekyll,microblog,python,"><meta property="og:title" content="Script for Exporting Micro.blog posts to Jekyll">
+<meta property="og:description" content="As I&rsquo;ve mentioned in previous posts, I&rsquo;m a fan of Jekyll for building static websites, but I have also been experimenting with Micro.blog for my personal site. There was a recent discussion on Micro.blog looking for options to mirror posts from Micro.blog to Jekyll. This question stuck with me, and as I already have a Raspberry Pi server in production for handling other daily maintenance tasks, I decided to investigate if this could be done in Python, building on my previous experience.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="/posts/2018/05/script-for-exporting-micro.blog-posts-to-jekyll/"><meta property="og:image" content="/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2018-05-23T00:00:00+00:00">
+<meta property="article:modified_time" content="2018-05-23T00:00:00+00:00">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="/">
+<meta name=twitter:title content="Script for Exporting Micro.blog posts to Jekyll">
+<meta name=twitter:description content="As I&rsquo;ve mentioned in previous posts, I&rsquo;m a fan of Jekyll for building static websites, but I have also been experimenting with Micro.blog for my personal site. There was a recent discussion on Micro.blog looking for options to mirror posts from Micro.blog to Jekyll. This question stuck with me, and as I already have a Raspberry Pi server in production for handling other daily maintenance tasks, I decided to investigate if this could be done in Python, building on my previous experience.">
+<meta property="article:published_time" content="2018-05-23 00:00:00 +0000 UTC">
+</head>
+<body>
+<div class=container>
+<header class=header>
+<span class=header__inner>
+<a href=/ style=text-decoration:none>
+<div class=logo>
+<span class=logo__mark>></span>
+<span class=logo__text>hello</span>
+<span class=logo__cursor style=background-color:#34fe2e>
+</span>
+</div>
+</a>
+<span class=header__right>
+<nav class=menu>
+<ul class=menu__inner><li><a href=/about/>About</a></li><li><a href=/contact/>Contact</a></li><li><a href=/posts/>Posts</a></li>
+</ul>
+</nav>
+<span class=menu-trigger><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+</span>
+</span>
+</span>
+</header>
+<div class=content>
+<main class=post>
+<div class=post-info>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+5 minutes
+</p>
+</div>
+<article>
+<h1 class=post-title>
+<a href=/posts/2018/05/script-for-exporting-micro.blog-posts-to-jekyll/>Script for Exporting Micro.blog posts to Jekyll</a>
+</h1>
+<div class=post-content>
+<p>As I&rsquo;ve mentioned in previous posts, I&rsquo;m a fan of <a href=https://jekyllrb.com/ target=_blank>Jekyll</a>
+for building static websites, but I have also been experimenting with <a href=http://Micro.blog target=_blank>Micro.blog</a>
+for my personal site. There was a recent discussion on <strong>Micro.blog</strong> looking for options to mirror posts from <strong>Micro.blog</strong> to Jekyll. This question stuck with me, and as I already have a Raspberry Pi server in production for handling other daily maintenance tasks, I decided to investigate if this could be done in Python, building on my previous experience.</p>
+<p>There are several options for exporting posts from <strong>Micro.blog</strong>, such as <em>RSS</em>, <em>JSON</em> or the <em>MetaWeblog</em> API. From my research, I discovered the <em>MetaWeblog</em> API had one significant advantage over the other options. This API presents posts in their original <em>Markdown</em> source format, allowing for easy export to Jekyll without translation.</p>
+<p>Also, for the purposes of simplicity, I built the script to export all posts from the past &lsquo;x&rsquo; hours, rather than tracking which posts have already been exported. This avoided the need for a backend database or log file to track post IDs. In the worst case, if a post was downloaded twice, it would simply over-write the matching post in Jekyll. Perhaps in future I will add this functionality, but I&rsquo;ll wait and see if it becomes an issue after long-term use.</p>
+<p>Here is a breakdown of the current version of the script, highlighting the most important sections. I also posted the script in full <a href=https://github.com/bftsystems/micro-blog-to-jekyll target=_blank>here</a>
+on Github, so you can download or submit code improvements. As always, the first section declares any external modules and functions required by the script.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#75715e>#!/usr/bin/env python</span>
+
+<span style=color:#f92672>import</span> xmlrpclib
+<span style=color:#f92672>import</span> re<span style=color:#f92672>,</span> string<span style=color:#f92672>,</span> sys<span style=color:#f92672>,</span> time<span style=color:#f92672>,</span> urllib<span style=color:#f92672>,</span> urlparse
+<span style=color:#f92672>from</span> datetime <span style=color:#f92672>import</span> datetime, timedelta
+
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>datetime_from_utc_to_local</span>(utc_datetime):
+    now_timestamp <span style=color:#f92672>=</span> time<span style=color:#f92672>.</span>time()
+    offset <span style=color:#f92672>=</span> datetime<span style=color:#f92672>.</span>fromtimestamp(now_timestamp) <span style=color:#f92672>-</span> datetime<span style=color:#f92672>.</span>utcfromtimestamp(now_timestamp)
+    <span style=color:#66d9ef>return</span> utc_datetime <span style=color:#f92672>+</span> offset
+</code></pre></div><p>In the next section, all the <strong>Micro.blog</strong> specific settings are declared. Primarily, this includes the app token, full domain name, and the maximum number of posts to read. This variable should be set to the maximum number of posts you expect between scheduled runs of the script.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#75715e># Micro.blog domain details</span>
+app_token <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;xxxxxxxxxxxxxxxxxxxx&#39;</span>
+<span style=color:#75715e># enter Micro.blog or custom domain name (to properly handle Micro.blog img links)</span>
+domain <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;www.thedeskofbrad.ca&#39;</span>
+user_id <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;thedeskofbrad&#39;</span>
+<span style=color:#75715e># maximum number of posts expected in time range </span>
+max_posts <span style=color:#f92672>=</span> <span style=color:#ae81ff>3</span>
+
+<span style=color:#75715e># Micro.blog xml-rpc server endpoint</span>
+server <span style=color:#f92672>=</span> xmlrpclib<span style=color:#f92672>.</span>ServerProxy(<span style=color:#e6db74>&#39;https://Micro.blog/xmlrpc&#39;</span>)
+posts <span style=color:#f92672>=</span> server<span style=color:#f92672>.</span>metaWeblog<span style=color:#f92672>.</span>getRecentPosts(domain, user_id, app_token, max_posts)
+</code></pre></div><p>As noted in the documentation, <strong>Micro.blog</strong> does not use passwords, the script uses an app token to authenticate connections. To generate an app token, open <strong>Settings</strong> on the <strong>Micro.blog</strong> site, and click the <strong>Edit Apps</strong> link at the bottom of the page. Enter a suitable name for the script, and click the <strong>Generate Token</strong> link. Once created, update the <em>app_token</em> variable in the script with this code.</p>
+<img src=Create-Micro-Blog-Token.jpg alt="Create Micro.blog Token" class=left style=border-radius:4px;margin-left:2em>
+<p>The next section covers any Jekyll specific settings, such as the path to your local Jekyll repository, and the page style to be used for posts. Also included is the time range of posts to be exported by the script. On my system, the script is scheduled to run once daily, so the time range is set for 24 hours.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#75715e># jekyll blog path</span>
+jekyll_root <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;/home/pi/git/thedeskofbrad.github.io&#39;</span>
+jekyll_post_layout <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;single&#34;</span>
+
+<span style=color:#75715e># time range to scan posts</span>
+time_range <span style=color:#f92672>=</span> datetime<span style=color:#f92672>.</span>now() <span style=color:#f92672>-</span> timedelta(hours <span style=color:#f92672>=</span> <span style=color:#ae81ff>24</span>)
+</code></pre></div><p>This last section does all the work of pulling each post from <strong>Micro.blog</strong>, checking for a title, and confirming if the post falls within the specified time range (correcting for UTC to local time). The script also downloads any image attached to the post and updates the <code>img</code> tag to use the Jekyll <code>site.url</code> variable. Currently, <strong>Micro.blog</strong> only allows for one image per post, which greatly simplifies the check to a single specifically formatted <code>img</code> tag (this is required, as the <strong>Micro.blog</strong> API does not use the <em>enclosure</em> field for attachments). Once all this is done, each post is exported to Jekyll.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>for</span> post <span style=color:#f92672>in</span> posts:
+	<span style=color:#75715e># Correct for UTC date returned from Micro.blog API</span>
+	dateCreated <span style=color:#f92672>=</span> datetime_from_utc_to_local(datetime<span style=color:#f92672>.</span>strptime(str(post[<span style=color:#e6db74>&#39;dateCreated&#39;</span>])[:<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>], <span style=color:#e6db74>&#39;%Y%m</span><span style=color:#e6db74>%d</span><span style=color:#e6db74>T%H:%M:%S&#39;</span>))
+	<span style=color:#75715e># Download posts with titles in selected time range</span>
+	<span style=color:#66d9ef>if</span> dateCreated <span style=color:#f92672>&gt;</span> time_range <span style=color:#f92672>and</span> post[<span style=color:#e6db74>&#39;title&#39;</span>] <span style=color:#f92672>!=</span> <span style=color:#e6db74>&#34;&#34;</span>:
+		title <span style=color:#f92672>=</span> post[<span style=color:#e6db74>&#39;title&#39;</span>]
+		content <span style=color:#f92672>=</span> post[<span style=color:#e6db74>&#39;description&#39;</span>]
+		
+		<span style=color:#75715e># If there is a Micro.blog img attribute, download the image to Jekyll blog assets folder</span>
+		img <span style=color:#f92672>=</span> re<span style=color:#f92672>.</span>search(<span style=color:#e6db74>&#34;(?P&lt;url&gt;img src=</span><span style=color:#ae81ff>\&#34;</span><span style=color:#e6db74>https?://&#34;</span><span style=color:#f92672>+</span>domain<span style=color:#f92672>+</span><span style=color:#e6db74>&#34;[^</span><span style=color:#ae81ff>\&#34;</span><span style=color:#e6db74>]+)&#34;</span>, content)
+		<span style=color:#66d9ef>if</span> img <span style=color:#f92672>is</span> <span style=color:#f92672>not</span> <span style=color:#66d9ef>None</span>:
+			img_url <span style=color:#f92672>=</span> img<span style=color:#f92672>.</span>group(<span style=color:#e6db74>&#34;url&#34;</span>)[<span style=color:#ae81ff>9</span>:]
+			img_filename <span style=color:#f92672>=</span> img_url<span style=color:#f92672>.</span>split(<span style=color:#e6db74>&#34;/&#34;</span>)[<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>] 
+			download_path <span style=color:#f92672>=</span> jekyll_root <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;/assets/images/&#34;</span> <span style=color:#f92672>+</span> img_filename
+			download <span style=color:#f92672>=</span> urllib<span style=color:#f92672>.</span>URLopener()
+			download<span style=color:#f92672>.</span>retrieve(img_url, download_path)
+			content <span style=color:#f92672>=</span> string<span style=color:#f92672>.</span>replace(content, img_url, <span style=color:#e6db74>&#39;{</span><span style=color:#e6db74>% r</span><span style=color:#e6db74>aw %}{{ site.url }}{{ site.baseurl }}{</span><span style=color:#e6db74>% e</span><span style=color:#e6db74>ndraw %}/assets/images/&#39;</span> <span style=color:#f92672>+</span> img_filename)
+
+		jekyll_post_filename <span style=color:#f92672>=</span> dateCreated<span style=color:#f92672>.</span>strftime(<span style=color:#e6db74>&#34;%Y-%m-</span><span style=color:#e6db74>%d</span><span style=color:#e6db74>&#34;</span>) <span style=color:#f92672>+</span> <span style=color:#e6db74>&#39;-&#39;</span> <span style=color:#f92672>+</span> title<span style=color:#f92672>.</span>replace(<span style=color:#e6db74>&#34; &#34;</span>,<span style=color:#e6db74>&#34;-&#34;</span>) <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;.md&#34;</span>		
+		<span style=color:#66d9ef>with</span> open(jekyll_root <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;/_posts/&#34;</span> <span style=color:#f92672>+</span> jekyll_post_filename, <span style=color:#e6db74>&#34;w&#34;</span>) <span style=color:#66d9ef>as</span> text_file:
+			text_file<span style=color:#f92672>.</span>write(<span style=color:#e6db74>&#34;---</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>)
+			text_file<span style=color:#f92672>.</span>write(<span style=color:#e6db74>&#34;layout: &#34;</span> <span style=color:#f92672>+</span> jekyll_post_layout <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>)
+			text_file<span style=color:#f92672>.</span>write(<span style=color:#e6db74>&#34;title: &#34;</span> <span style=color:#f92672>+</span> title <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>)
+			text_file<span style=color:#f92672>.</span>write(<span style=color:#e6db74>&#34;date: &#34;</span> <span style=color:#f92672>+</span> dateCreated<span style=color:#f92672>.</span>strftime(<span style=color:#e6db74>&#34;%Y-%m-</span><span style=color:#e6db74>%d</span><span style=color:#e6db74> %H:%M:%S&#34;</span>) <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>)
+			text_file<span style=color:#f92672>.</span>write(<span style=color:#e6db74>&#34;---</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>)
+			text_file<span style=color:#f92672>.</span>write(content<span style=color:#f92672>.</span>encode(<span style=color:#e6db74>&#34;utf-8&#34;</span>))
+</code></pre></div><p>As you can see, there isn&rsquo;t a lot of error checking in the code. I decided this was unnecessary as I assume the <strong>Micro.blog</strong> API presents &ldquo;clean&rdquo; data which has been validated as part of the posting process. Of course, someone could infiltrate their servers and corrupt the database, but I considered this a low risk for my purposes.</p>
+<p>Lastly, to ensure the script runs once every 24 hours (matching the <em>time_range</em> specified in the script), I added it to the <strong>crontab</strong> file (shown below). This configuration runs the script daily at one minute after midnight. Using <strong>cron</strong> also has an added bonus, if issues are encountered by the script, the error output is included in the report emailed from <strong>cron</strong>.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e># m h  dom mon dow   command</span>
+<span style=color:#ae81ff>1</span> <span style=color:#ae81ff>0</span> * * * /home/pi/bin/micro-blog-to-jekyll.sh
+</code></pre></div><p>One final point, this script simply downloads new posts from <strong>Micro.blog</strong> and saves them to the local Jekyll repository. Additional steps will be needed to force a rebuild of your site to actually publish any new posts. For my site using <a href=https://pages.github.com target=_blank>Github Pages</a>
+, I have a script which runs daily to perform a <code>git commit [...]</code>, and <code>git push origin master</code> to make any new posts live on my site.</p>
+<p>I hope you found this post useful, or at least interesting. If you would like to contact me or provide feedback, use the <a href=/contact>Contact</a>
+page, or message me on <a href=http://twitter.com/bftsystems target=_blank>Twitter</a>
+.</p>
+</div>
+</article>
+<hr>
+<div class=post-info>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83.0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7" y2="7"/></svg>
+<span class=tag><a href=/tags/jekyll/>jekyll</a></span>
+<span class=tag><a href=/tags/microblog/>microblog</a></span>
+<span class=tag><a href=/tags/python/>python</a></span>
+</p>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6A2 2 0 004 4v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+1021 Words
+</p>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+2018-05-23 12:00 AM
+</p>
+</div>
+<div class=pagination>
+<div class=pagination__title>
+<span class=pagination__title-h>Read other posts</span>
+<hr>
+</div>
+<div class=pagination__buttons>
+<span class="button previous">
+<a href=/posts/2018/06/moving-your-jekyll-site-from-github-pages-to-gitlab/>
+<span class=button__icon>←</span>
+<span class=button__text>Moving your Jekyll site from GitHub Pages to GitLab</span>
+</a>
+</span>
+<span class="button next">
+<a href=/posts/2018/03/hosting-media-or-files-on-amazon-s3/>
+<span class=button__text>Hosting Media or Files on Amazon S3</span>
+<span class=button__icon>→</span>
+</a>
+</span>
+</div>
+</div>
+</main>
+</div>
+<footer class=footer>
+<div class=footer__inner>
+<div class=footer__content>
+<span>&copy; 2021
+Brad Thornborrow
+<a href=/motd title=motd><svg xmlns="http://www.w3.org/2000/svg" width="22" height="18" viewBox="0 0 20 20" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:0;margin-right:.25em"><rect x="3" y="4" width="18" height="15" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></a></span><span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a><a href="/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 019 9"/><path d="M4 4a16 16 0 0116 16"/><circle cx="5" cy="19" r="1"/></svg></a></span>
+</div>
+</div>
+<div class=footer__inner>
+<div class=footer__content>
+<span>Powered by <a href=http://gohugo.io>Hugo</a> & <a href=https://themes.gohugo.io/hugo-theme-hello-friend-ng/ rel=nofollow>Hello Friend NG</a></span>
+</div>
+</div>
+</footer>
+</div>
+<script type=text/javascript src=/bundle.min.599099f1f14b78b657d524b28e10e0c5098e7cd46e9c7aed73d577068a276c3ff1bb234cbf29cb313333e83cf411727b43157c91ce5b809e2ffc81664614608e.js integrity="sha512-WZCZ8fFLeLZX1SSyjhDgxQmOfNRunHrtc9V3BoonbD/xuyNMvynLMTMz6Dz0EXJ7QxV8kc5bgJ4v/IFmRhRgjg=="></script>
+</body>
+</html>
