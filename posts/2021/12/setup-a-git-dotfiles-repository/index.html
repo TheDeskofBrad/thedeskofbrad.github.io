@@ -28,7 +28,7 @@ Setup a Git 'dotfiles' repository ∣ Brad Thornborrow
 <meta itemprop=description content="This post covers the basic steps to setup a Git bare repository for tracking local system config file changes. Also, the local repo can be pushed remotely to backup or sync with other systems. For more information, refer to this tutorial at Atlassian which goes into much greater detail.
 To set things up, run the following commands to create a bare Git repository and add the dotfiles alias to your system ."><meta itemprop=datePublished content="2021-12-02T00:00:00+00:00">
 <meta itemprop=dateModified content="2021-12-02T00:00:00+00:00">
-<meta itemprop=wordCount content="346"><meta itemprop=image content="/">
+<meta itemprop=wordCount content="345"><meta itemprop=image content="/">
 <meta itemprop=keywords content="linux,git,"><meta property="og:title" content="Setup a Git 'dotfiles' repository">
 <meta property="og:description" content="This post covers the basic steps to setup a Git bare repository for tracking local system config file changes. Also, the local repo can be pushed remotely to backup or sync with other systems. For more information, refer to this tutorial at Atlassian which goes into much greater detail.
 To set things up, run the following commands to create a bare Git repository and add the dotfiles alias to your system .">
@@ -97,7 +97,7 @@ dotfiles commit -am &quot;Add .bashrc&quot;
 ). Once this is ready, the following commands will connect your local repo and push the contents to the remote.</p>
 <pre tabindex=0><code>dotfiles remote add origin git@gitlab.com:yourname/blank-repo.git 
 dotfiles push -u origin master
-</code></pre><p>When setting up a new system, you can pull down your remote config using a similar process. First, follow the initial steps to setup the bare repo and <code>dotfile</code> sync alias. Once this is done, use these commands to connect your remote repository and pull down the config to your local system.</p>
+</code></pre><p>When setting up a new system, you can pull down your remote config using a similar process. First, follow the initial steps to setup the bare repo and <code>dotfile</code> sync alias. When this is done, these commands will connect your remote repository and pull down the config to your local system.</p>
 <pre tabindex=0><code>dotfiles remote add origin git@gitlab.com:yourname/repo-name.git 
 dotfiles checkout
 </code></pre><p>Once the config has been checked out locally, everything works the same to add, update or delete configuration files and push changes remotely.</p>
@@ -114,7 +114,7 @@ page, or message me on <a href=https://twitter.com/TheDeskofBrad target=_blank>T
 <span class=tag><a href=/tags/git/>git</a></span>
 </p>
 <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6A2 2 0 004 4v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-346 Words
+345 Words
 </p>
 <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
 2021-12-02 12:00 AM
