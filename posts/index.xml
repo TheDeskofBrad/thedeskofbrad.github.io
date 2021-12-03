@@ -1,7 +1,7 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Brad Thornborrow</title><link>/posts/</link><description>Recent content in Posts on Brad Thornborrow</description><generator>Hugo -- gohugo.io</generator><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Thu, 02 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Setup a 'dotfiles' repository using Git</title><link>/posts/2021/12/setup-a-dotfiles-repository-using-git/</link><pubDate>Thu, 02 Dec 2021 00:00:00 +0000</pubDate><guid>/posts/2021/12/setup-a-dotfiles-repository-using-git/</guid><description>This post covers the basic steps to setup a Git bare repository to track local system configuration file changes. The local repo can also be pushed remotely for backup or syncing with other systems. This process is based on a tutorial I found at Atlassian .
-To set things up, run the following commands to create the bare Git repository and add the dotfiles alias in your system .bashrc file. These commands can be run individually or pasted and run in a single bash script.</description><content type="html"><![CDATA[<p>This post covers the basic steps to setup a <strong>Git bare repository</strong> to track local system configuration file changes. The local repo can also be pushed remotely for backup or syncing with other systems. This process is based on a tutorial I found at <a href="https://www.atlassian.com/git/tutorials/dotfiles" target="_blank">Atlassian</a>
-.</p>
-<p>To set things up, run the following commands to create the bare Git repository and add the <code>dotfiles</code> alias in your system <code>.bashrc</code> file. These commands can be run individually or pasted and run in a single bash script.</p>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Brad Thornborrow</title><link>/posts/</link><description>Recent content in Posts on Brad Thornborrow</description><generator>Hugo -- gohugo.io</generator><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Thu, 02 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Setup a Git 'dotfiles' repository</title><link>/posts/2021/12/setup-a-git-dotfiles-repository/</link><pubDate>Thu, 02 Dec 2021 00:00:00 +0000</pubDate><guid>/posts/2021/12/setup-a-git-dotfiles-repository/</guid><description>This post covers the basic steps to setup a Git bare repository for tracking local system config file changes. Also, the local repo can be pushed remotely to backup or sync with other systems. For more information, refer to this tutorial at Atlassian which goes into much greater detail.
+To set things up, run the following commands to create a bare Git repository and add the dotfiles alias to your system .</description><content type="html"><![CDATA[<p>This post covers the basic steps to setup a <strong>Git bare repository</strong> for tracking local system config file changes. Also, the local repo can be pushed remotely to backup or sync with other systems. For more information, refer to this tutorial at <a href="https://www.atlassian.com/git/tutorials/dotfiles" target="_blank">Atlassian</a>
+ which goes into much greater detail.</p>
+<p>To set things up, run the following commands to create a bare Git repository and add the <code>dotfiles</code> alias to your system <code>.bashrc</code> file. These commands can be run individually or pasted into and run as a single bash script.</p>
 <pre tabindex="0"><code>git init --bare $HOME/.dotfiles
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 dotfiles config --local status.showUntrackedFiles no
@@ -14,14 +14,15 @@ echo &quot;alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$
 <pre tabindex="0"><code>dotfiles status  
 dotfiles add ~/.bashrc
 dotfiles commit -am &quot;Add .bashrc&quot; 
-</code></pre><p>To backup the files remotely, setup a remote Git repository using your platform of choice (e.g. <a href="https://gitlab.com" target="_blank">GitLab</a>
-). Once this is done, use the following commands to connect and push any local changes:</p>
-<pre tabindex="0"><code>dotfiles remote add origin git@gitlab.com:yourname/blankrepo.git 
+</code></pre><p>To backup the config remotely, setup a Git repository on your platform of choice (e.g. <a href="https://gitlab.com" target="_blank">GitLab</a>
+). Once this is ready, the following commands will connect your local repo and push the contents to the remote.</p>
+<pre tabindex="0"><code>dotfiles remote add origin git@gitlab.com:yourname/blank-repo.git 
 dotfiles push -u origin master
-</code></pre><p>If setting up a new system and you need to pull down the previous configuration, follow the first step to setup <code>dotfile</code> sync. Once this is setup, use these commands to connect your remote repo and pull down the latest config:</p>
-<pre tabindex="0"><code>dotfiles remote add origin git@gitlab.com:yourname/remoterepo.git 
+</code></pre><p>When setting up a new system, you can pull down your remote config using a similar process. First, follow the initial steps to setup the bare repo and <code>dotfile</code> sync alias. Once this is done, use these commands to connect your remote repository and pull down the config to your local system.</p>
+<pre tabindex="0"><code>dotfiles remote add origin git@gitlab.com:yourname/repo-name.git 
 dotfiles checkout
-</code></pre><p>I posted this here primarily for my own reference but if you found it helpful, you&rsquo;re welcome. To contact me, please use the <a href="/contact">Contact</a>
+</code></pre><p>Once the config has been checked out locally, everything works the same to add, update or delete configuration files and push changes remotely.</p>
+<p>I drafted this post primarily for my own reference but if you found it helpful, you&rsquo;re welcome. To contact me, please use the <a href="/contact">Contact</a>
  page, or message me on <a href="https://twitter.com/TheDeskofBrad" target="_blank">Twitter</a>
 .</p>
 <p>Take care.</p>
