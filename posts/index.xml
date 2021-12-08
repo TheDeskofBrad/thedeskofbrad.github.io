@@ -1,27 +1,28 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Brad Thornborrow</title><link>https://thedeskofbrad.ca/posts/</link><description>Recent content in Posts on Brad Thornborrow</description><generator>Hugo -- gohugo.io</generator><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Thu, 02 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://thedeskofbrad.ca/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Setup a Git 'dotfiles' repository</title><link>https://thedeskofbrad.ca/posts/2021/12/setup-a-git-dotfiles-repository/</link><pubDate>Thu, 02 Dec 2021 00:00:00 +0000</pubDate><guid>https://thedeskofbrad.ca/posts/2021/12/setup-a-git-dotfiles-repository/</guid><description>This post covers the basic steps to setup a Git bare repository for tracking local system config file changes. Also, the local repo can be pushed remotely to backup or sync with other systems. For more information, refer to this tutorial at Atlassian which goes into much greater detail.
-To set things up, run the following commands to create a bare Git repository and add the dotfiles alias to your system .</description><content type="html"><![CDATA[<p>This post covers the basic steps to setup a <strong>Git bare repository</strong> for tracking local system config file changes. Also, the local repo can be pushed remotely to backup or sync with other systems. For more information, refer to this tutorial at <a href="https://www.atlassian.com/git/tutorials/dotfiles" target="_blank">Atlassian</a>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Brad Thornborrow</title><link>https://thedeskofbrad.ca/posts/</link><description>Recent content in Posts on Brad Thornborrow</description><generator>Hugo -- gohugo.io</generator><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Thu, 02 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://thedeskofbrad.ca/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Setup a Git 'dotfiles' repository</title><link>https://thedeskofbrad.ca/posts/2021/12/setup-a-git-dotfiles-repository/</link><pubDate>Thu, 02 Dec 2021 00:00:00 +0000</pubDate><guid>https://thedeskofbrad.ca/posts/2021/12/setup-a-git-dotfiles-repository/</guid><description>This post covers the basic steps to setup a Git bare repository for tracking and backing up local system config files (a.k.a. dotfiles). The process is based on an article I found posted at Atlassian which goes into much greater detail.
+To set things up, use the following script to create a bare Git repository and add the dotfiles alias to your system .bashrc file. These commands could also be run individually if preferred.</description><content type="html"><![CDATA[<p>This post covers the basic steps to setup a <strong>Git bare repository</strong> for tracking and backing up local system config files (a.k.a. <code>dotfiles</code>). The process is based on an article I found posted at <a href="https://www.atlassian.com/git/tutorials/dotfiles" target="_blank">Atlassian</a>
  which goes into much greater detail.</p>
-<p>To set things up, run the following commands to create a bare Git repository and add the <code>dotfiles</code> alias to your system <code>.bashrc</code> file. These commands can be run individually or pasted into and run as a single bash script.</p>
-<pre tabindex="0"><code>git init --bare $HOME/.dotfiles
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+<p>To set things up, use the following script to create a bare Git repository and add the <code>dotfiles</code> alias to your system <code>.bashrc</code> file. These commands could also be run individually if preferred.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/sh
+</span><span style="color:#75715e"></span>git init --bare $HOME/.dotfiles
+alias dotfiles<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME&#39;</span>
 dotfiles config --local status.showUntrackedFiles no
 
-echo -e &quot;\n# Add alias for git dotfiles sync command&quot; &gt;&gt; $HOME/.bashrc
-echo &quot;alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'&quot; &gt;&gt; $HOME/.bashrc
-</code></pre><p>If run as a script, it must be executed using the <code>source</code> command (as shown below) or the <code>dotfiles</code> alias will not remain active in the current shell context.</p>
+echo -e <span style="color:#e6db74">&#34;\n# Add alias for git dotfiles sync command&#34;</span> &gt;&gt; $HOME/.bashrc
+echo <span style="color:#e6db74">&#34;alias dotfiles=&#39;/usr/bin/git --git-dir=</span>$HOME<span style="color:#e6db74">/.dotfiles/ --work-tree=</span>$HOME<span style="color:#e6db74">&#39;&#34;</span> &gt;&gt; $HOME/.bashrc
+</code></pre></div><p>If run as a script, it must be executed using the <code>source</code> command (as shown below) or the <code>dotfiles</code> alias will not remain active in the current shell context.</p>
 <pre tabindex="0"><code>source ./setup-dotfile-sync.sh
-</code></pre><p>Once the local <code>.dotfiles</code> repo has been created, all the usual <code>git</code> operations are permitted, using <code>dotfiles</code> in place of <code>git</code>. For example:</p>
+</code></pre><p>Once the <code>.dotfiles</code> repo has been created, all the usual <code>git</code> operations are permitted, using <code>dotfiles</code> in place of <code>git</code>. For example:</p>
 <pre tabindex="0"><code>dotfiles status  
 dotfiles add ~/.bashrc
 dotfiles commit -am &quot;Add .bashrc&quot; 
 </code></pre><p>To backup the config remotely, setup a Git repository on your platform of choice (e.g. <a href="https://gitlab.com" target="_blank">GitLab</a>
-). Once this is ready, the following commands will connect your local repo and push the contents to the remote.</p>
+). Once this is done, the following commands will connect your local repo and push the contents to the remote.</p>
 <pre tabindex="0"><code>dotfiles remote add origin git@gitlab.com:yourname/blank-repo.git 
 dotfiles push -u origin master
-</code></pre><p>When setting up a new system, you can pull down your remote config using a similar process. First, follow the initial steps to setup the bare repo and <code>dotfile</code> sync alias. When this is done, these commands will connect your remote repository and pull down the config to your local system.</p>
+</code></pre><p>When setting up a new system, you can pull down the config using a similar process. First, follow the initial steps to setup the bare repo and <code>dotfile</code> sync alias. After this is done, these commands will connect the remote repository and pull down the config.</p>
 <pre tabindex="0"><code>dotfiles remote add origin git@gitlab.com:yourname/repo-name.git 
 dotfiles checkout
-</code></pre><p>Once the config has been checked out locally, everything works the same to add, update or delete configuration files and push changes remotely.</p>
+</code></pre><p>Once this has been checked out locally, everything works the same to add, update or delete configuration files and push the changes remotely.</p>
 <p>I drafted this post primarily for my own reference but if you found it helpful, you&rsquo;re welcome. To contact me, please use the <a href="/contact">Contact</a>
  page, or message me on <a href="https://twitter.com/TheDeskofBrad" target="_blank">Twitter</a>
 .</p>
