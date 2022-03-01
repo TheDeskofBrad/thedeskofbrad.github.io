@@ -72,15 +72,15 @@ To set things up, use the following console commands to create the bare Git repo
 git init --bare $HOME/.dotfiles alias dotfiles=&amp;#39;/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME&amp;#39; dotfiles config --local status.</description><content type="html"><![CDATA[<p>This post covers the the basic steps to backup and sync your Linux system config files (a.k.a. <code>dotfiles</code>) using a <strong>Git bare repository</strong>. The process is based on an article I found at <a href="https://www.atlassian.com/git/tutorials/dotfiles" target="_blank">Atlassian</a>
  which goes into much greater detail.</p>
 <p>To set things up, use the following console commands to create the bare Git repository and add the <code>dotfiles</code> alias.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git init --bare $HOME/.dotfiles
-alias dotfiles<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME&#39;</span>
-dotfiles config --local status.showUntrackedFiles no
-</code></pre></div><p>Once this is done, the following command must be added to the <code>.bashrc</code> file in your home directory. This command recreates the <code>dotfiles</code> alias on system login.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Add alias for git dotfiles sync command</span>
-alias dotfiles<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME&#39;</span>
-</code></pre></div><p>After the <code>.dotfiles</code> repo has been created, all standard git operations are permitted, using <code>dotfiles</code> instead of <code>git</code>. For example, the following commands will add the <code>.bashrc</code> file to your <code>dotfiles</code> repository for tracking and commit the changes:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git init --bare $HOME/.dotfiles
+</span></span><span style="display:flex;"><span>alias dotfiles<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME&#39;</span>
+</span></span><span style="display:flex;"><span>dotfiles config --local status.showUntrackedFiles no
+</span></span></code></pre></div><p>Once this is done, the following command must be added to the <code>.bashrc</code> file in your home directory. This command recreates the <code>dotfiles</code> alias on system login.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Add alias for git dotfiles sync command</span>
+</span></span><span style="display:flex;"><span>alias dotfiles<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME&#39;</span>
+</span></span></code></pre></div><p>After the <code>.dotfiles</code> repo has been created, all standard git operations are permitted, using <code>dotfiles</code> instead of <code>git</code>. For example, the following commands will add the <code>.bashrc</code> file to your <code>dotfiles</code> repository for tracking and commit the changes:</p>
 <pre tabindex="0"><code>dotfiles add ~/.bashrc
-dotfiles commit -am &quot;Add .bashrc&quot; 
+dotfiles commit -am &#34;Add .bashrc&#34; 
 </code></pre><p>To backup your config files remotely and sync with other systems, setup a Git repository on your platform of choice (e.g. <a href="https://github.com" target="_blank">GitHub</a>
 ). Once this is done, the following commands will connect your local repo and push the contents to the remote.</p>
 <pre tabindex="0"><code>dotfiles remote add origin git@github.com:yourname/blank-repo.git 
