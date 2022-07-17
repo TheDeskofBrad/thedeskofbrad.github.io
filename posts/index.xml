@@ -88,7 +88,7 @@ dotfiles commit -am &#34;Add .bashrc&#34;
 dotfiles push -u origin master
 </code></pre><p>When setting up new systems, you can pull down your config files using a similar process. First, follow the initial steps to setup the bare repo and <code>dotfile</code> sync alias. After this is done, follow these commands to connect the remote repository and pull down the last saved config.</p>
 <pre tabindex="0"><code>dotfiles remote add origin git@github.com:yourname/repo-name.git 
-dotfiles checkout
+dotfiles pull origin master
 </code></pre><p>Once checked out locally, everything works the same to add, update or delete configuration files and push the changes. This will also allow you to pull down any changes to your other systems, keeping them in sync.</p>
 <p>I drafted this post primarily for my own reference but if you found it helpful, you&rsquo;re welcome ツ. To contact me, please use the <a href="/contact">Contact</a>
  page, or send me a direct message on <a href="https://twitter.com/TheDeskofBrad" target="_blank">Twitter</a>
