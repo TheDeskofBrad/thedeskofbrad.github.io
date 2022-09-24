@@ -7,8 +7,7 @@ sudo apt install meson dh-autoreconf libxcb-keysyms1-dev libpango1.</description
 <li>
 <p>Install <strong>i3-gaps</strong> build dependencies:</p>
 <pre tabindex="0"><code>sudo apt install meson dh-autoreconf libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev xcb libxcb1-dev libxcb-icccm4-dev libyajl-dev libev-dev libxcb-xkb-dev libxcb-cursor-dev libxkbcommon-dev libxcb-xinerama0-dev libxkbcommon-x11-dev libstartup-notification0-dev libxcb-randr0-dev libxcb-xrm0 libxcb-xrm-dev libxcb-shape0 libxcb-shape0-dev
-</code></pre><p>``</p>
-</li>
+</code></pre></li>
 <li>
 <p>Download <strong>i3-gaps</strong> from the <strong>Regolith-Linux</strong> repository, build and install in <code>/usr/local</code>. This is not the primary repo for <strong>i3-gaps</strong>, but it is being actively maintained, so I use it for my builds:</p>
 <pre tabindex="0"><code>git clone https://github.com/regolith-linux/i3-gaps-wm.git
@@ -17,8 +16,7 @@ mkdir -p build &amp;&amp; cd build
 meson --prefix /usr/local
 ninja
 sudo ninja install
-</code></pre><p>``</p>
-</li>
+</code></pre></li>
 <li>
 <p>Remove the original i3 installation package:</p>
 <p><code>sudo apt remove i3-wm</code></p>
@@ -36,8 +34,7 @@ sudo ninja install
 <li>
 <p>Install <strong>i3status</strong> build dependencies:</p>
 <pre tabindex="0"><code>sudo apt install libconfuse-dev libyajl-dev libasound2-dev libiw-dev libpulse-dev libnl-genl-3-dev
-</code></pre><p>``</p>
-</li>
+</code></pre></li>
 <li>
 <p>Download <strong>i3status</strong> repository, build and install in <code>/usr/local</code>:</p>
 <pre tabindex="0"><code>git clone https://github.com/i3/i3status.git
@@ -46,8 +43,7 @@ mkdir -p build &amp;&amp; cd build
 meson --prefix /usr/local
 ninja
 sudo ninja install
-</code></pre><p>``</p>
-</li>
+</code></pre></li>
 <li>
 <p>Remove original <strong>i3status</strong> installation package:</p>
 <p><code>sudo apt remove i3status</code></p>
@@ -61,8 +57,7 @@ sudo ninja install
 <li>
 <p>If any i3 dependencies are listed as <strong>no longer required</strong> when running <code>sudo apt upgrade</code>, use this command to mark them as manually installed to avoid removing them in error:</p>
 <pre tabindex="0"><code>sudo apt-mark manual &lt;package_names&gt;
-</code></pre><p>`</p>
-</li>
+</code></pre></li>
 </ol>
 <p>I drafted this post primarily for my own reference but if you found it helpful, you’re welcome ツ. To contact me, please use the <a href="/contact">Contact</a>
  page, or send me a direct message on <a href="https://twitter.com/TheDeskofBrad" target="_blank">Twitter</a>
